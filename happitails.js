@@ -79,7 +79,7 @@ var shelterData = {
 
             ]
         }, {
-            name: "Vincenzo Gaunt"
+            name: "Vincenzo Gaunt",
             age: 27,
             pets: [{
                     name: 'Fido',
@@ -100,7 +100,7 @@ var shelterData = {
                 }
             ]
         }, {
-            name: "Yuriko Wilken" 
+            name: "Yuriko Wilken" ,
             age: 33,
             pets: [{
                     name: 'Fluffy',
@@ -118,7 +118,7 @@ var shelterData = {
 
             ]
         }, {
-            name: "Homer Tedder" 
+            name: "Homer Tedder",
             age: 44,
             pets: [{
                 name: 'Puffball',
@@ -129,7 +129,7 @@ var shelterData = {
             }]
 
         }, {
-            name: "Rutha Janas" 
+            name: "Rutha Janas",
             age: 22,
             pets: []
         }
@@ -137,3 +137,16 @@ var shelterData = {
 
     ],
 }
+
+
+function addShelterAnimal(name,species, age, gender,toys){
+  shelterData.animals.push({
+    'name':name,
+    'species':species,
+    'age':age,
+    'gender':gender,
+    'toys':toys
+  });
+};
+//addShelterAnimal('buddy','dog',11,'m',['bone', 'chewtoy']);
+//console.log(shelterData.animals[6])
