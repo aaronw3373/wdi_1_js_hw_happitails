@@ -144,7 +144,7 @@ function addClient(name, age, pets){
   shelterData.clients.push({
     'name':name,
     'age':age,
-    'pets':[]
+    'pets':pets
   })
 }
 
@@ -198,4 +198,25 @@ function displayClientPets(){
     console.log(shelterData.clients[i].name + "   Number of pets: " +shelterData.clients[i].pets.length);
   };
 }
+
+var Shelter = function(name, address){
+  this.name = name;
+  this.address = address;
+  this.animals = [];
+  this.clients = [];
+}
+var Client = function(name, age, pets){
+  this.name = name;
+  this.age = age;
+  this.pets = [];
+  this.pets.push(pets);
+}
+ var Animal = function(name, species, age, gender, toys){
+    this.name = name;
+    this.species = species;
+    this.age = age;
+    this.gender = gender;
+    this.toys = [];
+    this.toys.push(toys);
+ }
 
