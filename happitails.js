@@ -7,9 +7,7 @@ var shelterData = {
             species: 'dog',
             age: 7,
             gender: 'm',
-            toys: ['ball', 'bone'
-
-            ]
+            toys: ['ball', 'bone']
         }, {
             name: 'max',
             species: 'dog',
@@ -21,18 +19,13 @@ var shelterData = {
             species: 'dog',
             age: 4,
             gender: 'f',
-            toys: ['stick', 'chewtoy'
-
-            ]
+            toys: ['stick', 'chewtoy']
         }, {
             name: 'tiger',
             species: 'cat',
             age: 8,
             gender: 'm',
-            toys: ['bottlecap', 'fur mouse', 'jingly bell'
-
-
-            ]
+            toys: ['bottlecap', 'fur mouse', 'jingly bell']
         }, {
             name: 'reggie',
             species: 'cat',
@@ -44,9 +37,7 @@ var shelterData = {
             species: 'cat',
             age: 6,
             gender: 'f',
-            toys: ['bottlecap', 'jingly bell'
-
-            ]
+            toys: ['bottlecap', 'jingly bell']
         }
 
 
@@ -94,9 +85,7 @@ var shelterData = {
                     species: 'dog',
                     age: 9,
                     gender: 'm',
-                    toys: ['stick', 'chewtoy'
-
-                    ]
+                    toys: ['stick', 'chewtoy']
                 }
             ]
         }, {
@@ -115,7 +104,6 @@ var shelterData = {
                     gender: 'm',
                     toys: ['fur mouse']
                 }
-
             ]
         }, {
             name: "Homer Tedder",
@@ -139,6 +127,8 @@ var shelterData = {
 }
 
 
+
+
 function addShelterAnimal(name,species, age, gender,toys){
   shelterData.animals.push({
     'name':name,
@@ -147,6 +137,65 @@ function addShelterAnimal(name,species, age, gender,toys){
     'gender':gender,
     'toys':toys
   });
-};
-//addShelterAnimal('buddy','dog',11,'m',['bone', 'chewtoy']);
-//console.log(shelterData.animals[6])
+}
+
+
+function addClient(name, age, pets){
+  shelterData.clients.push({
+    'name':name,
+    'age':age,
+    'pets':[]
+  })
+}
+
+function findClient(name){
+  for (var i = 0; i < shelterData.clients.length; i++) {
+    if (shelterData.clients[i].name === name){
+      return shelterData.clients[i];
+    }
+  };
+}
+
+function findAnimal(name){
+  for (var i = 0; i < shelterData.animals.length; i++) {
+    if (shelterData.animals[i].name === name){
+      return shelterData.animals[i];
+    }
+  };
+  for (var i = 0; i < shelterData.clients.length; i++) {
+    for (var j = 0; j < shelterData.clients[i].pets.length; j++) {
+      if (shelterData.clients[i].pets[j].name === name){
+        return shelterData.clients[i].pets[j];
+      }
+    };
+  };
+}
+
+function addToy(animalName, toys){
+  findAnimal(animalName).toys.push(toys);
+}
+
+function transferClientToShelter(clientName,animalName){
+  shelterData.animals.push(findAnimal(animalName));
+  for (var i = 0; i < findClient(clientName).pets.length; i++) {
+    if (findClient(clientName).pets[i].name===animalName){
+      delete findClient(clientName).pets[i];
+    }
+  };
+}
+
+function transferShelterToClient(clientName,animalName){
+  findClient(clientName).pets.push(findAnimal(animalName));
+  for (var i = 0; i < shelterData.animals.length; i++) {
+    if (shelterData.animals[i].name === animalName){
+      delete shelterData.animals[i];
+    }
+  };
+}
+
+function displayClientPets(){
+  for (var i = 0; i < shelterData.clients.length; i++) {
+    console.log(shelterData.clients[i].name + "   Number of pets: " +shelterData.clients[i].pets.length);
+  };
+}
+
